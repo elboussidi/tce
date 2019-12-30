@@ -140,7 +140,7 @@ if(isset($_GET['id'])){
                                                 <label>tel</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>     <?php echo $email;  ?></p>
+                                                <p>     <?php echo $email;  ?><a href="updatnum.php?id=<?php echo $id; ?>&name=<?php echo $name; ?>"> chang</a></p>
                                             </div>
                                         </div>
                                 <div class="row">
