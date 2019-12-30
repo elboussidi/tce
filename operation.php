@@ -1,7 +1,14 @@
  <?php
 require './connect.php';
 
- 
+   if(isset($_SESSION['rol'])){
+          $i= $_SESSION['rol'] ;
+
+          
+  } else {
+       echo '<script> alert("لا ليس لكم تصريح الوولوج لهده الصفحة ");  location.replace ("index.php"); </script>';
+       
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

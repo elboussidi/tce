@@ -1,7 +1,18 @@
  <?php
 require './connect.php';
 require './m.php';
-?> <?php   include './header.php'; ?>
+?> <?php   include './header.php';
+  if(isset($_SESSION['rol'])){
+          $i= $_SESSION['rol'] ;
+         if($i != 2 ){
+              echo '<script> alert(" ليس لكم تصريح الوولوج لهده الصفحة ");  location.replace ("page.php"); </script>';
+         }
+          
+  } else {
+       echo '<script> alert("لا ليس لكم تصريح الوولوج لهده الصفحة ");  location.replace ("index.php"); </script>';
+       
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <title>update sold</title>
