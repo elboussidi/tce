@@ -14,6 +14,6 @@ if(!$conect){
  }
   
  session_start();
-  
+ require './m.php';
 
 ?>

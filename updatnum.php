@@ -1,6 +1,6 @@
  <?php
 require './connect.php';
-require './m.php';
+
 ?> <?php   include './header.php'; 
    if(isset($_SESSION['rol'])){
           $i= $_SESSION['rol'] ;
@@ -108,7 +108,7 @@ $namen=$_GET['name'];
         
                 if(isset($_POST['u'])){
                     
-                     $num=$_POST['n'];  
+                     $num=majid($conect,$_POST['n']);  
                   
                              if(empty($num)  ){
                                  echo ' <div class="col-md-8 offset-md-2"><div class="alert alert-danger" role="alert"> 

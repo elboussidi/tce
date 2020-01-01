@@ -108,12 +108,12 @@ $namen=$_GET['name'];
                     </tr>
                 </thead>
                 <?php  while ($row= mysqli_fetch_assoc($qq2)) {
-            $id=$row['id'];
-            $idp=$row['id pr'];
-              $nomber=$row['nomber'];
-                  $mt=$row['mt'];
-                    $mat=$row['mat']; 
-                    $date= $row['date']; 
+            $id=majid2($conect,$row['id']);
+            $idp=majid2($conect,$row['id pr']);
+              $nomber=majid2($conect,$row['nomber']);
+                  $mt=majid2($conect,$row['mt']);
+                    $mat=majid2($conect,$row['mat']); 
+                    $date=majid2($conect, $row['date']); 
                     $newdat=mb_substr( "$date " , 0 , 11 , "utf8" );
                     ?>
                 <tbody>

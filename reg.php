@@ -108,16 +108,17 @@ ini_set('display_errors', 1);
    $uname= majid($_POST['uname']);
      $uphone= majid($_POST['uphone']);
       $uaddress= majid($_POST['uaddress']);
-       $upassword1= $_POST['upassword1'];
+       $upassword1= majid($_POST['upassword1']);
        $upassword2= $_POST['upassword2'];
-       $ulev=1;
+       $hash = password_hash($upassword2, PASSWORD_DEFAULT);
+     $ulev=1;
       // $upassword=md5($password) ;
         $ugender=$_POST['ugender'];
-    $q=    mysqli_query($conect,( "SELECT * FROM `sold`  WHERE `sold`='$uphone'"));
+    $q=    mysqli_query($conect,( "SELECT * FROM `sold`  WHERE `pretel`='$uphone'"));
         if($q){
             while ($row= mysqli_fetch_assoc($q)) {
            
-              $namea=$row['sold'];
+              $namea=majid2($conect,$row['pretel']);
               
         }
        
@@ -146,7 +147,7 @@ ini_set('display_errors', 1);
    
        
     $ins="INSERT INTO `user` (`id`, `name`, `tel`, `adress`, `pass`, `rol`, `gender`, `sold`)"
-            . " VALUES (NULL, '$uname', '$uphone', '$uaddress', '$upassword1', '$ulev', '$ugender', '0')";
+            . " VALUES (NULL, '$uname', '$uphone', '$uaddress', '$hash', '$ulev', '$ugender', '0')";
     $qins= mysqli_query($conect, $ins) ;
     if($qins){
        echo '<div class="alert alert-success" role="alert">
@@ -167,13 +168,7 @@ ini_set('display_errors', 1);
       }
       
      
- }
-      
-        
-        
-        
-        
-        
+ }    
     }
     ?>
             </div>

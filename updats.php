@@ -1,6 +1,6 @@
  <?php
 require './connect.php';
-require './m.php';
+
 ?> <?php   include './header.php';
   if(isset($_SESSION['rol'])){
           $i= $_SESSION['rol'] ;

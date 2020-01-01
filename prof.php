@@ -40,10 +40,7 @@ require './connect.php';
   <?php include 'x.php'; ?> 
 
     <!--  menu  -->
-    
-    <br><br>
-    
-    
+   
    
         <div class='row'>
   <div class='col-3'>
@@ -64,12 +61,12 @@ if(isset($_GET['id'])){
  $qq=$conect->query($red) ;
     if($qq){
         while ($row= mysqli_fetch_assoc($qq)) {
-            $id= $row['id'];
-              $name= $row['name'];
-                  $email= $row['tel'];
-                    $lev= $row['rol'];                  
-                  $position= $row['adress'];
-                    $gender=$row['gender'];
+            $id=majid2($conect, $row['id']);
+              $name= majid2($conect,$row['name']);
+                  $email=majid2($conect, $row['tel']);
+                    $lev= majid2($conect,$row['rol']);                  
+                  $position= majid2($conect,$row['adress']);
+                    $gender=majid2($conect,$row['gender']);
                 
                      
    } }   

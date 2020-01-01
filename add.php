@@ -1,6 +1,6 @@
  <?php
 require 'connect.php';
-require 'm.php';
+
   if(isset($_SESSION['rol'])){
           $i= $_SESSION['rol'] ;
          if($i != 2 ){

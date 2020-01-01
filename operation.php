@@ -97,10 +97,10 @@ if(isset($_GET['id'])){
                     </tr>
                 </thead>
                 <?php  while ($row= mysqli_fetch_assoc($qq2)) {
-            $id=$row['id'];
-              $nomber=$row['nomber'];
-                  $mt=$row['mt'];
-                    $mat=$row['mat']; 
+            $id=majid2($conect,$row['id']);
+              $nomber=majid2($conect,$row['nomber']);
+                  $mt=majid2($conect,$row['mt']);
+                    $mat=majid2($conect,$row['mat']); 
                     $date= $row['date']; 
                     $newdat=mb_substr( "$date " , 0 , 11 , "utf8" );
                     ?>

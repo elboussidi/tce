@@ -12,20 +12,34 @@ require './connect.php';
   }
   
     if(isset($_POST['login'])){
-    $email= $_POST['tel'];
-        $password= $_POST['pass'];
+    $email=majid($_POST['tel']);
+        $password=htmlentities( $_POST['pass']);
+        
+        
+      $log2="SELECT * FROM `user` WHERE `tel`='$email'";
       
-      $log="SELECT * FROM `user` WHERE `tel`='$email'AND `pass`='$password'";
+    $logqr2=$conect->query($log2) ;
+    
+    if($logqr2){
+         if($logqr2->num_rows > 0);
+        while ($row2 = $logqr2->fetch_assoc()) {
+                $passhash= majid2($conect,$row2['pass']);
+        }
+        
+      if (password_verify($password, $passhash)) {
+      echo "Password matches.";
+
+      $log="SELECT * FROM `user` WHERE `tel`='$email'AND `pass`='$passhash'";
       
     $logqr=$conect->query($log) ;
     
     if($logqr){
          if($logqr->num_rows > 0);
         while ($row = $logqr->fetch_assoc()) {
-                $_SESSION['tel']= $row['tel'];
-                $_SESSION['name']= $row['name'];
-                $_SESSION['id']=  $row['id'];
-                 $_SESSION['rol']=  $row['rol'];
+                $_SESSION['tel']=majid2($conect, $row['tel']);
+                $_SESSION['name']=majid2($conect, $row['name']);
+                $_SESSION['id']= majid2($conect, $row['id']);
+                 $_SESSION['rol']= majid2($conect, $row['rol']);
                 
          }//END WHILE
          if(isset($_SESSION['rol'] )){
@@ -44,7 +58,11 @@ require './connect.php';
         
          }      }//END IF $logqr
      
-      }// END IF ISSET
+      }
+      } else {
+          echo 'incorecct pas';
+      }
+         }// END IF ISSET
      
     ?>
 

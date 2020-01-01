@@ -41,7 +41,7 @@ $tt2="SELECT SUM(nomber) FROM `opera` ";
     if($q2){
        while ($row3= mysqli_fetch_assoc($q2)) {
            
-              $to=$row3['SUM(nomber)'];
+              $to=majid2($conect,$row3['SUM(nomber)']);
     }
     }   
       $tt="SELECT SUM(mt) FROM `opera` ";
@@ -49,7 +49,7 @@ $tt2="SELECT SUM(nomber) FROM `opera` ";
     if($q){
        while ($row2= mysqli_fetch_assoc($q)) {
            
-              $totalo=$row2['SUM(mt)'];
+              $totalo=majid2($conect,$row2['SUM(mt)']);
     }
     }
    $reddatad="SELECT SUM(sold) FROM `user`" ;
@@ -59,7 +59,7 @@ $tt2="SELECT SUM(nomber) FROM `opera` ";
         
        while ($row= mysqli_fetch_assoc($qdatad)) {
            
-              $total=$row['SUM(sold)'];
+              $total=majid2($conect,$row['SUM(sold)']);
    
     
        }}
@@ -156,10 +156,10 @@ $tt2="SELECT SUM(nomber) FROM `opera` ";
                 
                 while ($row= mysqli_fetch_assoc($qq)) {
            
-              $name=$row['name'];
-                  $id= $row['id'];
-                  $sold=$row['sold'] ;
-                  $date=$row['date'] ;
+              $name=majid2($conect,$row['name']);
+                  $id= majid2($conect,$row['id']);
+                  $sold=majid2($conect,$row['sold']) ;
+                  $date=majid2($conect,$row['date']) ;
                     $newdat=mb_substr( "$date" , 0 , 11 , "utf8" );
                     //$date_c= majid2($conect,$row['date_c']); 
                    // $newdat=mb_substr( "$date_c " , 0 , 11 , "utf8" );
