@@ -1,7 +1,6 @@
-<?php
+ <?php
 require 'connect.php';
-require 'm.php';
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +22,7 @@ require 'm.php';
 
 <body style="background-color: #e9ecef;">
      <?php   include 'header.php'; 
+  
      error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
@@ -105,12 +105,16 @@ ini_set('display_errors', 1);
           
     if(isset($_POST['reg'])){
 
-   $uname= majid($_POST['uname']);
-     $uphone= majid($_POST['uphone']);
+   $uname= $_POST['uname'];
+     $uphone= $_POST['uphone'];
       $uaddress= majid($_POST['uaddress']);
        $upassword1= majid($_POST['upassword1']);
        $upassword2= $_POST['upassword2'];
        $hash = password_hash($upassword2, PASSWORD_DEFAULT);
+       
+       
+       
+       
      $ulev=1;
       // $upassword=md5($password) ;
         $ugender=$_POST['ugender'];
@@ -162,7 +166,7 @@ ini_set('display_errors', 1);
         
     
         echo '<div class="alert alert-danger" role="alert">
- sorry eroor password !
+ sorry eroor insert !
 </div> '; 
     } }
       }
