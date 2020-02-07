@@ -13,7 +13,7 @@ if(!$conect){
  //  echo 'تم الاتصال بنجاح  ';
  }
   
- session_start();
+ 
  require './m.php';
 
 ?>

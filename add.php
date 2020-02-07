@@ -1,16 +1,5 @@
  <?php
 require 'connect.php';
-
-  if(isset($_SESSION['rol'])){
-          $i= $_SESSION['rol'] ;
-         if($i != 2 ){
-              echo '<script> alert(" ليس لكم تصريح الوولوج لهده الصفحة ");  location.replace ("page.php"); </script>';
-         }
-          
-  } else {
-       echo '<script> alert("لا ليس لكم تصريح الوولوج لهده الصفحة ");  location.replace ("index.php"); </script>';
-       
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,26 +22,11 @@ require 'connect.php';
 <body>
     <?php   include 'header.php'; ?>
     <br>
-   
- <?php require './x.php';  ?>
-    <!--  menu  -->
-    
+ 
     <br><br>
     
-   
-        <div class='row'>
-  <div class='col-3'>
-    <div class='nav flex-column nav-pills' id='v-pills-tab' role='tablist' aria-orientation='vertical'>
-    <?php include 'slaid.php'; ?>
-    
-    </div>
-  </div>
-        
-      
-        <div class="col-9">
-        <div class="panel -info">
+  
        
-     
 <?php   
 //  
 //  if(isset($_SESSION['lev'])){
@@ -62,13 +36,7 @@ require 'connect.php';
 //    }
 
 
-if(isset($_GET['id']) and isset($_GET['name'])  ) {
-$idn=$_GET['id'];
-$namen=$_GET['name'];
-}
-if(isset($_SESSION['name'])){
-    $nameprof=$_SESSION['name'];
-}
+
 ?>
 
 
@@ -79,7 +47,7 @@ if(isset($_SESSION['name'])){
         <div class="col-md-12">  
                         <div class="alert alert-success" style="display:none;">
                 <span class="glyphicon glyphicon-ok"></span> Drag table row and cange Order</div> 
-                <table class="table"> <div class="alert alert-info" role="alert"> &emsp; &emsp; &emsp; &emsp; operation de  : <?php echo $namen; ?> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; nember id :<?php echo $idn; ?></div>
+                <table class="table"> <div class="alert alert-info" role="alert"> </div>
                 <thead>
                     <tr>
                         
@@ -100,7 +68,18 @@ if(isset($_SESSION['name'])){
                 <tbody>
                 <form  method="POST">
                     <tr class="active">
-                       
+                        <th>
+                      <select name="nam"  class="form-control">
+ <option> Said</option><option> Youness</option><option> Nour-Eddin</option><option> Abdelmajid</option>
+<option>Faisal </option><option>Hicham </option><option>Nouhaila </option><option> Rachida</option>
+ <option>Ghizlan </option><option>Kabira </option><option>Omaima </option><option>Khalid </option>
+  <option>Saadia </option> <option> Zenbe</option> <option>Iman</option><option>Sokaina </option>   
+  <option>Amina </option><option>Nihal </option><option>Samira </option><option> Fatima-Zahra</option>
+  <option> Saida</option><option>Meryam</option><option>Naima</option><option>Ayoub</option>
+                      </select>
+  
+                        </th>
+                  
                           <td>
                               <input class="form-control" type="number" maxlength="2" name="nm" >
                             
@@ -108,11 +87,11 @@ if(isset($_SESSION['name'])){
                            
                         <td>
                                 <select name='mat' class="form-control">  
-                                <option>calculs comm</option>
-                                <option>gestion des doc</option>
-                                <option>environnement</option>
-                                <option>comptabilité</option>
-                            </select>
+                                <option>calculs-commerciaux</option>
+                                <option>gestion des documents</option>
+                                <option >environnement</option>
+                                <option selected>comptabilité</option>
+                                </select>
                         </td> 
                        
                     </tr>
@@ -124,19 +103,66 @@ if(isset($_SESSION['name'])){
                 
             </table>
         </div>
-    </div>
-</div>
+   
           <center> <input  class="btn btn-success" type="submit"  name="add" value="add" > </center> 
             
             
             
               </form>
+                <br><hr><br>
                 
+              <form action="" method="POST">
+
+                <div class="form-group row">
+                    
+                    
+                  <label for="email_address" class="col-md-4 col-form-label text-md-right"></label>
+                  <div class="col-md-6">
+                      <select name="nama"  class="form-control">
+ <option> Said</option><option> Youness</option><option> Nour-Eddin</option><option> Abdelmajid</option>
+<option>Faisal </option><option>Hicham </option><option>Nouhaila </option><option> Rachida</option>
+ <option>Ghizlan </option><option>Kabira </option><option>Omaima </option><option>Khalid </option>
+  <option>Saadia </option> <option> Zenbe</option> <option>Iman</option><option>Sokaina </option>   
+  <option>Amina </option><option>Nihal </option><option>Samira </option><option> Fatima-Zahra</option>
+  <option> Saida</option><option>Meryam</option><option>Naima</option><option>Ayoub</option>
+  
+  
+                      </select>
+                 <br> </div>
+                  
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" name="nsold"> 
+                    </div>
+                </div>
+
+                
+                 <div class="col-md-6 offset-md-4">
+                  <input type="submit" name="updat"  value="updat" class="btn btn-primary">
+
+                </div>
+              </div>
+
+            </form>
                 
                 
                 <?php 
+                 if(isset($_POST['updat'])){
+                    $nama=majid($_POST['nama']);
+                     $nsold= majid($_POST['nsold']); 
+                     
+                if(empty($nama) or empty($nsold) ){
+                                 echo ' <div class="col-md-8 offset-md-2"><div class="alert alert-danger" role="alert"> 
+                                 لايمكن ترك حقل فارغ</div>';
+                             }else{
+                $nn="UPDATE `sold` SET `sold`='$nsold' WHERE `name`='$nama'";
+                $qnn= mysqli_query($conect, $nn);
+                if($qnn){
+                     echo ' <br>  <div class="col-md-8 offset-md-2"><div class="alert alert-success" role="alert"> sold has been updat </div>';         
+                 } else {
+                      die("error update sold".mysqli_error($conect));  
+                 }}}
                 if(isset($_POST['add'])){
-               
+                    $nam=majid($_POST['nam']);
                      $mat= majid($_POST['mat']);  
                        $nm= majid($_POST['nm']) ;  
                       
@@ -151,7 +177,7 @@ if(isset($_SESSION['name'])){
 
 
      
-                $ad="INSERT INTO `opera` (`id`, `id pr`, `nomber`, `mt`, `mat`, `date`) VALUES (NULL, '$idn', '$nm', '$mt', '$mat', CURRENT_TIMESTAMP)";
+                $ad="INSERT INTO `opera` (`id`, `nam`, `nomber`, `mt`, `mat`, `date`) VALUES (NULL, '$nam', '$nm', '$mt', '$mat', CURRENT_TIMESTAMP)";
                 $adq=$conect->query($ad) ;
                 if($adq){
                     echo ' <br>  <div class="col-md-8 offset-md-2"><div class="alert alert-success" role="alert"> ok note has been added </div>';
