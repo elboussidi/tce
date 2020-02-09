@@ -1,5 +1,6 @@
  <?php
 require 'connect.php';
+require './m.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +149,7 @@ require 'connect.php';
                 <?php 
                  if(isset($_POST['updat'])){
                     $nama=majid($_POST['nama']);
-                     $nsold= majid($_POST['nsold']); 
+                     $nsold=$_POST['nsold']; 
                      
                 if(empty($nama) or empty($nsold) ){
                                  echo ' <div class="col-md-8 offset-md-2"><div class="alert alert-danger" role="alert"> 
